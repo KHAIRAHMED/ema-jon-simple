@@ -1,9 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './CardDetails.css'
 
 const CardDetails = (props) => {
     const card = props.card
-    console.log(card)
 
     let total =0;
     for (let i = 0; i < card.length; i++) {
@@ -35,6 +35,9 @@ const CardDetails = (props) => {
             <p>shipping : {shipping} </p>
             <p>Tax + vat : {toFixes(tax)}</p>
             <h6>Totall:{toFixes(total+tax+shipping)}</h6>
+            <Link to="/OrderReview">
+                <button className="main-button">Review</button>
+            </Link>
 
         </div>
     );
