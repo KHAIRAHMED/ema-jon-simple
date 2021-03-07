@@ -8,7 +8,7 @@ const CardDetails = (props) => {
     let total =0;
     for (let i = 0; i < card.length; i++) {
         const element = card[i];
-        total=total+element.price;        
+        total=total+element.price *element.selectItem;        
     }
     const tax = total/10;
 
@@ -27,17 +27,22 @@ const CardDetails = (props) => {
         return Math.round(num)
 
     }
+
+    const totalPrice = (total+tax+shipping)
+    // debugger;
     return (
         <div>
             <h1>Price Summary</h1>
             <h5>Items Ordered-{card.length}</h5>
-            <p>Product Price : {total}</p>
+            <p>Product Price : {toFixes(total)}</p>
             <p>shipping : {shipping} </p>
             <p>Tax + vat : {toFixes(tax)}</p>
-            <h6>Totall:{toFixes(total+tax+shipping)}</h6>
-            <Link to="/OrderReview">
+            <h6>Totall:{toFixes(totalPrice)}</h6>
+            {/* <Link to="/OrderReview">
                 <button className="main-button">Review</button>
-            </Link>
+            </Link> */}
+            {props.children}
+            
 
         </div>
     );
